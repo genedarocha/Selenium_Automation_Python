@@ -1,9 +1,9 @@
 # 
-# Voxstar 12
-# Description - Automated File Downloads - Python Script/Code that shows how to setup File Downloads
-# Change: Added New Script/Code for Automated File Downloads
+# Voxstar 07
+# Description - Automated Form Filling - Python Script/Code Fils out the registration form with fake data 
+# Change: Added New Script/Code for Automated Form Filling
 # Date  : "17.03.2024"
-# Version: 1.0 
+# Version: 1.0
 # More Information : These examples cover a wide range of automation scenarios using Selenium and Python, including automated testing, data entry, 
 # job applications, price monitoring, social media interactions, email checking, form filling, survey completion, captcha solving, 
 # browser extensions installation, video playback, and file downloads. 
@@ -13,22 +13,23 @@
 
 
 from selenium import webdriver
-import os
+from faker import Faker
 
 driver = webdriver.Chrome()
-driver.get("https://www.example.com/files")
+driver.get("https://www.example.com/register")
 
-# Click on a file download link
-download_link = driver.find_element_by_link_text("Download File")
-download_link.click()
+fake = Faker()
 
-# Wait for the file to download
-driver.implicitly_wait(10)  # Adjust the wait time as needed
+# Fill out the registration form with fake data
+name_field = driver.find_element_by_id("name")
+email_field = driver.find_element_by_id("email")
+password_field = driver.find_element_by_id("password")
 
-# Move the downloaded file to a desired location
-downloads_dir = os.path.join(os.path.expanduser("~"), "Downloads")
-downloaded_file = os.path.join(downloads_dir, "file.zip")
-new_location = "/path/to/desired/location/file.zip"
-os.rename(downloaded_file, new_location)
+name_field.send_keys(fake.name())
+email_field.send_keys(fake.email())
+password_field.send_keys(fake.password())
+
+submit_button = driver.find_element_by_id("submit")
+submit_button.click()
 
 driver.quit()
