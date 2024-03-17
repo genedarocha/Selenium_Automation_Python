@@ -10,7 +10,8 @@
 # Further Examples include: examples cover various advanced automation scenarios using Selenium and Python, 
 # including web performance testing, visual testing, parallel test execution, browser configuration, web crawling, web application testing, 
 # browser fingerprinting, and screenshot stitching
-
+# There are more examples of using Python and Selenium for various automation tasks, including ones that utilizes ChatGPT for code conversion and 
+# other examples that incorporate AI in different ways:
 
 from selenium import webdriver
 import time
